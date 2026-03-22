@@ -1,3 +1,24 @@
+/* ====================
+   Weather App - 现代化玻璃态设计
+   ==================== */
+
+:root {
+    --primary: #6366f1;
+    --secondary: #ec4899;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --bg-dark: #0f172a;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border: rgba(148, 163, 184, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,31 +26,118 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
     min-height: 100vh;
     padding: 20px;
 }
 
+/* 动态背景 */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: float 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--primary);
+    top: -100px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--secondary);
+    bottom: -150px;
+    right: -150px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -50px) scale(1.1); }
+    66% { transform: translate(-50px, 50px) scale(0.9); }
+}
+
+/* 玻璃态效果 */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+/* 主容器 */
 .container {
     max-width: 900px;
     margin: 0 auto;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+/* 头部 */
+header {
+    margin-bottom: 30px;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-icon {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
+    background: var(--gradient-1);
 }
 
 /* 搜索区域 */
 .search-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.search-section h1 {
-    text-align: center;
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .search-box {
@@ -41,76 +149,98 @@ body {
 #city-input {
     flex: 1;
     padding: 15px 20px;
-    border: 2px solid #e0e0e0;
+    background: var(--glass-bg);
+    border: 2px solid var(--border);
     border-radius: 12px;
+    color: var(--text-primary);
     font-size: 1rem;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
 }
 
 #city-input:focus {
     outline: none;
-    border-color: #74ebd5;
+    border-color: var(--primary);
 }
 
 .btn-search {
     padding: 15px 30px;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: var(--gradient-1);
     color: white;
     border: none;
     border-radius: 12px;
     font-size: 1.2rem;
     cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.btn-search:hover {
-    transform: scale(1.05);
-}
-
-.btn-search:active {
-    transform: scale(0.95);
-}
-
-.quick-cities {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.quick-label {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.city-tag {
-    padding: 6px 15px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
     transition: all 0.3s;
 }
 
+.btn-search:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* 收藏城市 */
+.favorite-cities {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.section-label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.city-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.city-tag {
+    padding: 8px 15px;
+    background: var(--glass-bg);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
 .city-tag:hover {
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: var(--gradient-1);
     color: white;
+    border-color: transparent;
+}
+
+.btn-add-city {
+    background: var(--glass-bg);
+    border: 2px solid var(--border);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.btn-add-city:hover {
+    background: var(--gradient-1);
+    border-color: transparent;
 }
 
 /* 加载动画 */
 .loading {
-    background: white;
-    border-radius: 20px;
-    padding: 60px;
     text-align: center;
+    padding: 60px;
 }
 
 .spinner {
     width: 50px;
     height: 50px;
-    border: 4px solid #f0f0f0;
-    border-top-color: #74ebd5;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin: 0 auto 20px;
@@ -122,10 +252,8 @@ body {
 
 /* 错误消息 */
 .error-message {
-    background: white;
-    border-radius: 20px;
-    padding: 60px;
     text-align: center;
+    padding: 60px;
 }
 
 .error-icon {
@@ -134,16 +262,12 @@ body {
 }
 
 .error-message p {
-    color: #ef4444;
-    font-size: 1.1rem;
+    color: var(--danger);
 }
 
 /* 天气内容 */
 .weather-content {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
 }
 
 .current-weather {
@@ -155,7 +279,7 @@ body {
     align-items: center;
     gap: 30px;
     padding: 30px;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: var(--gradient-1);
     border-radius: 15px;
     margin-bottom: 20px;
 }
@@ -205,10 +329,14 @@ body {
 }
 
 .detail-card {
-    background: #f8f9fa;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
+    transition: all 0.3s;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
 }
 
 .detail-icon {
@@ -217,26 +345,21 @@ body {
 }
 
 .detail-label {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     margin-bottom: 5px;
 }
 
 .detail-value {
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.1rem;
     font-weight: bold;
 }
 
 /* 天气预报 */
-.forecast-section {
-    margin-top: 30px;
-}
-
 .forecast-section h3 {
-    color: #333;
-    font-size: 1.5rem;
     margin-bottom: 20px;
+    color: var(--text-primary);
 }
 
 .forecast-grid {
@@ -246,19 +369,21 @@ body {
 }
 
 .forecast-card {
-    background: #f8f9fa;
     padding: 20px;
+    background: var(--glass-bg);
     border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: all 0.3s;
+    border: 1px solid var(--border);
 }
 
 .forecast-card:hover {
     transform: translateY(-5px);
+    border-color: var(--primary);
 }
 
 .forecast-date {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 10px;
 }
@@ -270,40 +395,24 @@ body {
 }
 
 .forecast-temp {
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .forecast-desc {
-    color: #999;
+    color: var(--text-secondary);
     font-size: 0.85rem;
     margin-top: 5px;
-    text-transform: capitalize;
 }
 
-/* 提示 */
-.demo-mode-notice {
-    background: white;
+/* 演示提示 */
+.demo-notice {
+    padding: 15px;
     border-radius: 12px;
-    padding: 15px 20px;
-    margin-top: 20px;
-    border-left: 4px solid #74ebd5;
-}
-
-.demo-mode-notice p {
-    color: #666;
+    text-align: center;
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-.demo-mode-notice a {
-    color: #74ebd5;
-    text-decoration: none;
-}
-
-.demo-mode-notice a:hover {
-    text-decoration: underline;
 }
 
 /* 响应式设计 */
@@ -321,8 +430,9 @@ body {
         grid-template-columns: repeat(2, 1fr);
     }
     
-    .search-section h1 {
-        font-size: 2rem;
+    .header-top {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 

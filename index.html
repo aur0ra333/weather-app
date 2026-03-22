@@ -7,22 +7,35 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="search-section">
-            <h1>🌤️ 天气查询</h1>
-            <div class="search-box">
-                <input type="text" id="city-input" placeholder="输入城市名称，如：北京、上海、Guangzhou..." />
-                <button id="search-btn" class="btn-search">
-                    <span>🔍</span>
-                </button>
+    <!-- 动态背景 -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+    </div>
+
+    <div class="container glass">
+        <header>
+            <div class="header-top">
+                <h1><span class="header-icon">🌤️</span> 天气查询</h1>
+                <div class="header-actions">
+                    <button class="btn-icon" id="location-btn" title="定位当前位置">📍</button>
+                    <button class="btn-icon" id="theme-toggle" title="切换主题">🌙</button>
+                </div>
             </div>
-            <div class="quick-cities">
-                <span class="quick-label">热门城市：</span>
-                <button class="city-tag" data-city="北京">北京</button>
-                <button class="city-tag" data-city="上海">上海</button>
-                <button class="city-tag" data-city="广州">广州</button>
-                <button class="city-tag" data-city="深圳">深圳</button>
-                <button class="city-tag" data-city="成都">成都</button>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="输入城市名称..." />
+                <button id="search-btn" class="btn-search">🔍</button>
+            </div>
+            
+            <div class="favorite-cities">
+                <span class="section-label">收藏城市：</span>
+                <div id="favorite-cities-list" class="city-tags">
+                    <!-- 动态加载 -->
+                </div>
+                <button class="btn-add-city" id="add-favorite-btn" title="添加当前城市到收藏">➕</button>
             </div>
         </div>
 
@@ -53,22 +66,22 @@
                 </div>
                 
                 <div class="weather-details">
-                    <div class="detail-card">
+                    <div class="detail-card glass">
                         <div class="detail-icon">🌡️</div>
                         <div class="detail-label">体感温度</div>
                         <div class="detail-value" id="feels-like">--°C</div>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card glass">
                         <div class="detail-icon">💧</div>
                         <div class="detail-label">湿度</div>
                         <div class="detail-value" id="humidity">--%</div>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card glass">
                         <div class="detail-icon">💨</div>
                         <div class="detail-label">风速</div>
                         <div class="detail-value" id="wind-speed">-- m/s</div>
                     </div>
-                    <div class="detail-card">
+                    <div class="detail-card glass">
                         <div class="detail-icon">🌅</div>
                         <div class="detail-label">日出</div>
                         <div class="detail-value" id="sunrise">--:--</div>
@@ -77,15 +90,15 @@
             </div>
 
             <div class="forecast-section">
-                <h3>📅 未来天气预报</h3>
+                <h3>📅 未来 5 天预报</h3>
                 <div class="forecast-grid" id="forecast-grid">
                     <!-- 天气预报将通过 JavaScript 动态加载 -->
                 </div>
             </div>
         </div>
 
-        <div class="demo-mode-notice">
-            <p>💡 提示：当前使用模拟数据演示模式。要获取真实天气数据，需要注册 <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a> 密钥。</p>
+        <div class="demo-notice glass">
+            💡 演示模式：使用模拟数据 | 支持自动定位和收藏城市功能
         </div>
     </div>
 
