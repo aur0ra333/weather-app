@@ -1,125 +1,35 @@
-# 天气查询应用 (Weather App)
+# 城市天气观察台 Weather Desk
 
-一个美观实用的天气查询应用，支持实时天气和未来 5 天预报，展示 API 集成和异步编程能力。
+一个静态天气数据展示项目，用本地模拟数据实现城市查询、舒适度计算、空气质量展示、五日趋势和城市对比。
 
-## ✨ 功能特性
+## 在线演示
 
-- 🌍 **城市搜索** - 支持全球城市天气查询
-- 📊 **实时天气** - 温度、湿度、风速、体感温度等详细数据
-- 📅 **5 天预报** - 未来 5 天天气趋势预测
-- 🎨 **动态图标** - 根据天气状况显示对应图标
-- 🏷️ **快速选择** - 热门城市一键查询
-- 📱 **响应式设计** - 完美适配各种设备
-- 🔄 **加载动画** - 优雅的加载状态提示
-- ⚠️ **错误处理** - 友好的错误提示
+[访问项目](https://aur0ra333.github.io/weather-app/)
 
-## 🚀 技术栈
+## 功能
 
-- **HTML5** - 语义化结构
-- **CSS3** - Grid 布局、动画、渐变
-- **JavaScript (ES6+)** - Async/Await、Promise、Fetch API
-- **OpenWeatherMap API** - 真实天气数据（演示模式使用模拟数据）
-- **响应式设计** - 移动优先
+- 城市查询：支持北京、上海、广州、深圳、成都、杭州、郑州、武汉等演示城市
+- 单位切换：摄氏度 / 华氏度即时切换
+- 天气详情：温度、体感、湿度、风速、AQI、紫外线和气压
+- 舒适度计算：综合体感温度、湿度和空气质量生成分数
+- 五日趋势：根据城市稳定生成未来 5 天预报，方便演示和测试
+- 城市对比：快速比较多个城市的核心指标
+- 本地记录：收藏城市和最近查询保存在 LocalStorage
 
-## 📦 安装和使用
+## 技术点
 
-1. 克隆项目
+- 原生 JavaScript 数据渲染
+- LocalStorage 本地状态保存
+- CSS Grid / Flexbox 响应式布局
+- 表单交互、错误提示和单位换算
+- 可替换为真实天气 API 的数据结构
+
+## 本地运行
+
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/aur0ra333/weather-app.git
 cd weather-app
+python -m http.server 8080
 ```
 
-2. 配置 API 密钥（可选）
-```javascript
-// 在 app.js 中设置你的 API 密钥
-const API_KEY = 'your-api-key-here';
-const USE_DEMO_MODE = false; // 设置为 false 使用真实 API
-```
-
-3. 直接在浏览器打开
-```bash
-open index.html
-```
-
-## 🎯 核心技术展示
-
-### Fetch API 和 Async/Await
-```javascript
-async function getWeather(city) {
-    const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
-    );
-    const data = await response.json();
-    return parseWeatherData(data);
-}
-```
-
-### 错误处理
-```javascript
-try {
-    const weatherData = await getWeather(city);
-    updateUI(weatherData);
-} catch (error) {
-    showError(error.message);
-}
-```
-
-### 数据解析和转换
-```javascript
-function parseWeatherData(data) {
-    return {
-        city: data.name,
-        temp: Math.round(data.main.temp),
-        humidity: data.main.humidity,
-        // ... 更多字段
-    };
-}
-```
-
-## 🌟 API 集成说明
-
-### OpenWeatherMap API
-1. 访问 [OpenWeatherMap](https://openweathermap.org/api) 注册账号
-2. 获取免费 API 密钥（每月 60 次调用）
-3. 在 `app.js` 中配置密钥
-
-### API 端点
-- 当前天气：`/data/2.5/weather`
-- 参数：城市名、API 密钥、单位、语言
-
-## 📱 项目亮点
-
-1. **演示模式** - 无需 API 密钥即可体验完整功能
-2. **优雅降级** - API 不可用时自动切换到模拟数据
-3. **用户体验** - 加载动画、错误提示、快速选择
-4. **代码质量** - 模块化、可维护、注释清晰
-
-## 🔧 功能扩展建议
-
-- [ ] 添加自动定位功能（Geolocation API）
-- [ ] 添加多城市对比功能
-- [ ] 添加天气预警通知
-- [ ] 添加历史天气数据图表
-- [ ] 添加空气质量指数（AQI）
-- [ ] 添加深色模式
-- [ ] 添加多语言支持
-
-## 📄 License
-
-MIT
-
-## 👤 作者
-
-你的姓名 - [GitHub 链接]
-
----
-
-**适合简历的技能点：**
-- ✅ RESTful API 集成
-- ✅ Fetch API 和 Axios
-- ✅ Async/Await 异步编程
-- ✅ Promise 错误处理
-- ✅ JSON 数据解析
-- ✅ 响应式 Web 设计
-- ✅ CSS Grid 和 Flexbox
-- ✅ 用户体验优化
+然后访问 `http://localhost:8080`。
