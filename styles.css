@@ -483,3 +483,63 @@ input:focus {
         grid-template-columns: 1fr;
     }
 }
+
+/* Visual refinement */
+body {
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f2f8fb 46%, #eef6f3 100%);
+}
+
+.hero,
+.search-panel,
+.panel,
+.detail-card {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 46px rgba(27, 67, 91, 0.08);
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    left: 34px;
+    right: 34px;
+    bottom: 0;
+    height: 4px;
+    border-radius: 999px 999px 0 0;
+    background: linear-gradient(90deg, var(--blue), var(--teal), var(--yellow));
+}
+
+.current-card {
+    background:
+        linear-gradient(135deg, #12304a 0%, #146b70 100%);
+    box-shadow: 0 24px 60px rgba(18, 48, 74, 0.24);
+}
+
+.detail-card,
+.forecast-card,
+.compare-card {
+    transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+}
+
+.detail-card:hover,
+.forecast-card:hover,
+.compare-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(29, 114, 210, 0.28);
+    box-shadow: 0 14px 30px rgba(27, 67, 91, 0.08);
+}
+
+.forecast-card,
+.compare-card,
+.city-tag {
+    background: #fff;
+}
+
+.unit-toggle {
+    background: #fff;
+}
