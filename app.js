@@ -99,6 +99,7 @@ function renderWeather(city) {
     $('#temp').textContent = convertTemp(data.temp);
     $('#degree-label').textContent = `°${unit.toUpperCase()}`;
     $('#summary-text').textContent = data.summary;
+    $('#updated-at').textContent = `演示数据更新于 ${new Date().toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}`;
     $('#feels-like').textContent = tempText(data.feels);
     $('#humidity').textContent = `${data.humidity}%`;
     $('#wind-speed').textContent = `${data.wind} m/s`;
