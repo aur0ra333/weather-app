@@ -529,9 +529,9 @@ input:focus {
     color: var(--muted);
 }
 
-/* ---------- Demo Note ---------- */
+/* ---------- Footer ---------- */
 
-.demo-note {
+.site-footer {
     margin-top: 18px;
     text-align: center;
     color: var(--muted);

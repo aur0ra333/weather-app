@@ -601,11 +601,11 @@ function renderCompare(cur, cityName) {
 function renderQuickLists() {
     $('#favorite-list').innerHTML = favorites.length
         ? favorites.map(cityTag).join('')
-        : '<span class="empty-chip">暂无收藏</span>';
+        : '<span class="empty-chip">暂无收藏城市，搜索并收藏你关注的城市</span>';
 
     $('#recent-list').innerHTML = recentCities.length
         ? recentCities.map(cityTag).join('')
-        : '<span class="empty-chip">暂无查询</span>';
+        : '<span class="empty-chip">暂无最近查询，搜索城市后将自动记录</span>';
 
     $$('[data-city-tag]').forEach((tag) => {
         tag.addEventListener('click', () => {
