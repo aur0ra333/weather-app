@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>城市天气观察台 - Weather Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:wght@700;800;900&family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <nav class="top-nav">
+        <span class="top-nav-brand">Weather Desk</span>
+        <div class="top-nav-links">
+            <span class="unit-toggle" role="group" aria-label="温度单位">
+                <button class="active" data-unit="c" type="button">°C</button>
+                <button data-unit="f" type="button">°F</button>
+            </span>
+        </div>
+    </nav>
     <main class="weather-shell">
         <section class="hero">
             <div>
                 <p class="eyebrow">Weather Desk</p>
                 <h1>城市天气观察台</h1>
                 <p>把天气查询、舒适度、空气质量和城市对比放在一个页面里，适合做接口数据展示类项目。</p>
-            </div>
-            <div class="unit-toggle" role="group" aria-label="温度单位">
-                <button class="active" data-unit="c" type="button">°C</button>
-                <button data-unit="f" type="button">°F</button>
             </div>
         </section>
 
